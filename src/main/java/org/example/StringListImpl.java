@@ -22,6 +22,7 @@ public class StringListImpl implements StringList {
     @Override
     public String add(int index, String item) {
         validateItem(item);
+        validateIndex(index);
 
         if (size == storage.length) {
             storage = grow(size + 1);
@@ -128,7 +129,7 @@ public class StringListImpl implements StringList {
     }
 
     private void validateIndex(int index) {
-        if (index < 0 || index >= size) {
+        if (index < 0 || index > size) {
             throw new InvalidIndexException();
         }
     }
